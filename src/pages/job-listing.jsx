@@ -38,11 +38,15 @@ const Joblisting = () => {
   const { fn: fnCompanies, data: companies } = useFetch(getCompanies);
 
   useEffect(() => {
-    if (isLoaded) fnCompanies();
+    if (isLoaded) {
+      fnCompanies();
+    }
   }, [isLoaded]);
 
   useEffect(() => {
-    if (isLoaded) fnJobs();
+    if (isLoaded) {
+      fnJobs();
+    }
   }, [isLoaded, location, company_id, searchQuery]);
 
   const handleSearch = () => {
@@ -111,7 +115,7 @@ const Joblisting = () => {
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              {companies.map(({ name, id }) => {
+              {companies?.map(({ name, id }) => {
                 return (
                   <SelectItem key={name} value={id}>
                     {name}
